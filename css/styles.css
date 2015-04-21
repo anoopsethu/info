@@ -809,6 +809,10 @@ input[type="text"] {
     transition: all 0.3s ease-in-out 0s;
 }
 
+.btn-mail:hover{
+	opacity:0.7;
+}
+
 .send-icon{
 	margin-top: -13px;
 	margin-left: -12px;
@@ -832,7 +836,28 @@ input[type="text"] {
 	margin-top:150px;
 }
 
+.next{
+	position: fixed;
+	z-index: 9999;
+	margin: 0px 15px 0px 0px;
+	background: url('../img/next.svg');
+	padding: 0px;
+	right: 0px;
+	bottom: 20px;
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	display: block;
+	transition:all 0.2s ease;
+}
 
+.next:hover{
+	opacity:0.5;
+}
+
+.inactive{
+	display: none;
+}
 
 
 
