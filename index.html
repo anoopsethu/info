@@ -1,214 +1,378 @@
-<!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<title>Edvice Infograph</title>
-	
+    <head>
+        <title>Edvice Infographic</title>
+        <meta content="Edvice Infographic" property="og:title" />
+        <meta content="http://www.getedvice.com/infographic/" property="og:url" />
+        <meta content="So what do most students go through to crack the JEE? A string of all nighters, endless question banks, anticipation and worry. Here is a story that we can relate to all too well!" property="og:description" />
+        <meta content="http://www.getedvice.com/static/info/img/thumbShare.png" property="og:image" />
+        <script src="js/jquery.min.js"></script>
+    	<script>
+    	$(document).ready(function() {
+    		$(window).load(function() {
+    			// Animate loader off screen
+    			$(".se-pre-con").fadeOut("slow");;
+    		});
+    	});
+    	</script>
 
-	<link rel="stylesheet" href="css/pure-min.css">
-	<link rel="stylesheet" href="css/styles.css">
-	<link rel="stylesheet" href="css/animate.min.css">
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+    	<link rel="stylesheet" href="css/preloader.css">
 
-	<script src="js/jquery.min.js"></script>
 
-	
-	<script>
-	$(document).ready(function() {
-		$(window).load(function() {
-			// Animate loader off screen
-			$(".se-pre-con").fadeOut("slow");;
-		});
-	});
+            <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-60357982-1', 'auto');
+            ga('send', 'pageview', {
+            'page': '/infographic',
+            'title': 'Edvice Infographic'
+            });
+
+            </script>
+            <script>
+	function ajaxRequest(){
+		if (window.XMLHttpRequest)
+  		{// code for IE7+, Firefox, Chrome, Opera, Safari
+  			xmlhttp=new XMLHttpRequest();
+  		}
+		else
+  		{// code for IE6, IE5
+  			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  		}
+			return xmlhttp
+		}
+	function emailValidate(email) {
+
+  		var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
+
+  		if(!email.match(reEmail)) {
+    		return false;
+  		}
+		else{
+
+  		return true;
+
+		}
+
+		}
+	function validateEmail(email,button_id){
+		if(!emailValidate(email)) {
+			$("#" + button_id).addClass("btn-disabled");
+  		}
+		else{
+
+		$("#" + button_id).removeClass("btn-disabled");
+
+		}
+
+	}
+
+	function modalLoginOpen(){
+	    $("#modalLogin").modal('show');
+	}
+
+	function modalHide(){
+	    $("#openModal").addClass("hide");
+	}
+
+	$(function() {
+        $('#boxclose').click(function(){
+            $('#box').animate({'top':'-100%'},200,function(){
+                $('#overlay').fadeOut('fast');
+            });
+        });
+
+    });
+
+
+	function submitSubscription(){
+
+	var email_input = document.getElementById('email_field');
+	var name = document.getElementById('name_field');
+	if(emailValidate(email_input.value)){
+	var ajax_request = ajaxRequest();
+				var params = "email=" + encodeURIComponent(email_input.value) + "&csrfmiddlewaretoken=" + '{{csrf_token}}' + "&name=" + encodeURIComponent(name.value);
+				ajax_request.onreadystatechange = function(){
+					if (ajax_request.readyState == 4 && ajax_request.status == 200)
+					{
+						/*alert("You have been subscribed");*/
+						$('#overlay').fadeIn(200,function(){
+                            $('#box').animate({'top':'50px'},50);
+                        });
+                        return false;
+					}
+				}
+
+				ajax_request.open("POST","{% url 'info-graph-subscribe' %}"  ,true);
+				ajax_request.setRequestHeader("X-CSRFToken", '{{csrf_token}}');
+				ajax_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				ajax_request.send(params);
+	}
+
+	}
+
 	</script>
-	
-</head>
 
-<body>
 
- 	
+
+    </head>
+    <body>
+
 <div class="se-pre-con"></div>
 
-<div id="progress" data-0="width:0%;background:rgb(133, 201, 66);" data-end="width:100%;background:rgb(133, 201, 66);"></div>
+<link rel="stylesheet" href="css/pure-min.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/animate.min.css">
 
+<!-- <div class="mobile-hide">
+	<p>Coming soon on mobiles!</p>
+</div> -->
+
+
+
+
+
+
+
+<div id="mobile">
 <div id="skrollr-body">
-
-<div class="container">
-
-<div class="scene homeSlide" data-2700="top: 0%">
-
+	<div class="scene homeSlide">
 	
-			<div class="pure-g center header" data-1000="opacity:1;top:0%;" data-2500="opacity:0;top:-100%;">
-				<div class="pure-u-1">
-					<img src="img/logo.png" style="position:relative;">
-					<p class="sub-text">Arjun, an engineering aspirant, is about to start his day after having pulled another all-nighter. </br>And the day ahead is long...</p>
+		<div class="pure-g center mobHeader">
+			<div class="pure-u-1">
+					<img src="img/bannerMob.png" style="position:relative;">
+					<p class="sub-text">Anuj is about to start yet another gruelling day.</p>
 					
 					<img src="img/arrow-down.svg" style="position:relative;">
 					
-				</div>
-			</div> 
+			</div>
+		</div>
+		
+		<div class="mobInner center">
+			<img src="img/bed.png" class="mobImg absCenter">
+			<img src="img/sleep.png" alt="Juan" class="hero"
+                          data-0="top: 12%; left:58%;display:block;"
+													data-500="display:none;"
+													>
+			<img src="img/spriteMain.png" alt="Juan" class="hero"
+                          data-0="top: 12%; left:58%;display:none;"
+													data-501="display:block;"
+													data-4000="display:block;" data-4001="display:none;"
+													>
+			<img src="img/blanket.png" class="mobImg absCenter">
+		</div>
+		
+	</div>
+	
+	<div class="scene" data-1000="top:100%;" data-1500="top:0%;display:block;" data-2000="top:0%;" data-3000="top:-75%;" data-7000="top:-150%;">
+		<div class="mob_dialogThink">
+		</div>
+		
+		<div class="grass">
+			<div class="mob_road">
+				<img src="img/bus.png" style="max-width:35%;" class="mobImg"
+													data-2000="opacity:0;top:0%;right:7%; display:block;"
+													data-2500="opacity:1;top:5%;"
+													data-3000="top:15%;"
+													data-4500="top:25%;"
+													data-6000="top:40%;"
+													data-7000="display:none;"
+													>
+													
+				<img src="img/car.png" style="max-width:35%;" class="mobImg"
+													data-2000="top:45%;left:7%;"
+													data-5000="top:10%;"
+													>
 			
-		<div class="inner">
-		
-				
+			</div>
+		</div>		
+	</div>
+	
 
-		<!-- <img src="img/desk.png" alt="Desk" class="desk" data-1700="top: 12%; right:0%; display: block;" data-2700="top: -100%; display: none;"> -->
+	
+	<div class="scene homeSlide" data-5500="top:100%;" data-6000="top:0%;display:block;">
+		<div class="mob_dialogMotivated" data-6000="opacity:1;top:0%;" data-6500="top:0%;" data-7000="top:-100%;">
+		</div>
 		
+		<div class="mob_blackboard" data-7000="opacity:0;" data-7500="top:5%;opacity:1;">
+			<img src="img/classStat1.png" class="mobImg absCenter" data-7500="top:10%;display:block;" data-7800="opacity:1;" data-8200="opacity:1;" data-8500="opacity:0;">
+			<img src="img/classStat2.png" class="mobImg absCenter" data-9000="top:10%;display:block;opacity:0;" data-9300="opacity:1" data-9700="opacity:1;" data-10000="opacity:0;">
+			<img src="img/classStat3.png" class="mobImg absCenter" data-10500="top:10%;display:block;opacity:0;" data-11000="opacity:1">
+		</div>
+		
+		<img src="img/student.png" class="mobImg absCenter mob_student" data-7000="top:40%;opacity:0" data-7500="opacity:1;">
+		<img src="img/student.png" class="mobImg mob_student" data-8000="right:10%;top:60%;opacity:0" data-8500="opacity:1;">
+		<img src="img/student.png" class="mobImg mob_student" data-9000="left:10%;top:60%;opacity:0" data-9500="opacity:1;">
+		
+	</div>
+	
+
+	<div class="scene" data-10500="top:100%;" data-11000="top:0%;display:block;" data-11500="top:0%;" data-20000="top:-300%;">
+	<div class="mob_dialogSchool">
+	</div>
+		
+		<div class="grass">
+			<div class="mob_road">
+				<img src="img/underConstruction.png" class="mobImg" style="max-width:40%"
+													data-14000="top:24%;right:4%;">
+				<img src="img/bigBoard.png" class="mobImg" style="max-width:40%"
+													data-14000="top:29.5%;right:4%;"
+								>
+				<img src="img/car3.png" class="mobImg" style="max-width:40%" data-12000="top:17.6%;right:4%;">
+				
+				<img src="img/bus.png" style="max-width:35%;" class="mobImg"
+													data-12000="top:0%; right:7%;"
+													data-13000="top:12.2%;"
+													data-13500="top:12.2%;"
+													data-14000="top:12.2%;right:60%;"
+													data-14500="top:12.2%;right:60%;"
+													data-17500="top:40%;"
+													>
+			
+			</div>
+		</div>		
+	</div>
+	
+	
+	
+	<div class="scene homeSlide" data-16500="top:100%;" data-17500="top:0%;display:block;">
+		<div class="mob_dialogSchool" data-17500="opacity:1;top:0%;" data-18000="top:0%;" data-18500="top:-100%;">
+		</div>
+		
+		
+	
+	</div>
+	
+	
+</div>
+</div>
+
+
+
+
+
+
+<div id="desktop">
+<div id="skrollr-body">
+<div class="container">
+<div class="scene homeSlide" data-2700="top: 0%">
+			<div class="pure-g center header" data-1000="opacity:1;top:0%;" data-2500="opacity:0;top:-100%;">
+				<div class="pure-u-1">
+					<img src="img/banner.png" style="position:relative;">
+					<p class="sub-text">Anuj is about to start yet another gruelling day.</p>
+
+					<img src="img/arrow-down.svg" style="position:relative;">
+
+				</div>
+			</div>
+		<div class="inner">
+		<!-- <img src="img/desk.png" alt="Desk" class="desk" data-1700="top: 12%; right:0%; display: block;" data-2700="top: -100%; display: none;"> -->
 			<div class="window-sky" data-0="top:0%; background: rgb(39,43,42);display:block;right:0%;" data-1000="background: rgb(166,218,232);" data-1700="display:block;" data-3000="display:none; right:-200%;">
 				<img src="img/window.png">
-				
-				
 				<img src="img/stars.png" alt="Stars" class="stars" data-0="top: 22%; left:5%;opacity:1;" data-1000="opacity:0; top:30%;">
 				<img src="img/moon.png" alt="Moon" class="moon" data-0="top: 20%; left:40%; opacity:1;" data-1000="opacity:0; top:40%;">
 				<img class="sun" data-100="top: 50%; left: 36%; opacity:0;" data-1000="top: 20%;; opacity:1;" src="img/sun.png" alt="Sun" class="sun">
-				
 			</div>
-			
 		<img src="img/bed.png" alt="Bed Frame" class="bed-frame" data-1700="top: 0%;left:31%; display: block;" data-4000="display: none;">
-			
 		<img src="img/digClock6.png" class="digClockFinal animated bounce infinite" data-0="display:none;" data-700="left: 16.5%;top:0.5%; display: block;" data-1700="left: 16.5%;top:0.5%; display: block;" data-2700="left: -100%; display: none;">
 		<img src="img/digClock5.png" class="digClock" data-550="left: 16.5%;top:0.5%; display: block;" data-700="display: none;">
 		<img src="img/digClock4.png" class="digClock" data-400="left: 16.5%;top:0.5%; display: block;" data-550="display: none;">
 		<img src="img/digClock3.png" class="digClock" data-250="left: 16.5%;top:0.5%; display: block;" data-400="display: none;">
 		<img src="img/digClock2.png" class="digClock" data-100="left: 16.5%;top:0.5%; display: block;" data-250="display: none;">
-
-		
-    <img src="img/side-table.png" alt="Side Table" class="side-table" data-1700="left: 0%;top:0%; display: block;" data-3000="left: -100%; display: none;"> 
-		
+    <img src="img/side-table.png" alt="Side Table" class="side-table" data-1700="left: 0%;top:0%; display: block;" data-3000="left: -100%; display: none;">
 		<!-- <img src="img/desk.png" alt="Desk" class="desk" data-1700="opacity:1; display: block;" data-2700="opacity:0; display: none;">
     <img src="img/side-table.png" alt="Side Table" class="side-table" data-1700="opacity:1; display: block;" data-2700="opacity:0; display: none;"> -->
-
 					<img src="img/sleep.png" alt="Juan" class="mojo"
                           data-0="top: 12%; left:50%;display:block;"
 													data-800="display:none;"
 													>
-													
 					<img src="img/spriteMain.png" alt="Juan" class="mojo"
                           data-800="top: 12%; left:50%;display:none;"
 													data-801="display:block;"
 													data-4000="display:block;" data-4001="display:none;"
 													>
-													
-		
-		
 					<img src="img/blanket.png" data-1700="top: 0%;left:31%; display: block;" data-4000="display: none;">
-		
-</div>
 </div>
 
-
-
+    <div class="sm-icons">
+        <a href="http://www.facebook.com/getedvice" target="_blank"><img src="img/fbIcon.png"></a>
+        <a href="http://www.twitter.com/getedvice" target="_blank"><img src="img/twitterIcon.png"></a>
+        <!-- <a href="http://www.facebook.com/getedvice" target="_blank"><img src="img/youtubeIcon.png"></a> -->
+    </div>
+</div>
 
 <div class="scene" data-3000="top:100%;" data-4000="top:0%;display:block;" data-5000="top:0%;"  data-6500="top:-75%;" data-7000="top:-75%;" data-9000="top:-150%;" data-9001="display:none;">
 
 	<div class="dialogThink">
-		<div class="dialogContainer">
+		<!--<div class="dialogContainer">
 			<p class="">Going to an IIT would be a dream come true!</p>
-		</div>
+		</div> -->
 	</div>
-	
 	<div class="grass">
-		<div class="road"> 
-		
-					<img src="img/bus.png" class="mojoBus" 
+		<div class="road">
+					<img src="img/bus.png" class="mojoBus"
 													data-5000="opacity:0;top:0%;right:11%; display:block;"
 													data-6500="opacity:1;top:10%;"
 													data-7000="top:10%;"
 													data-8800="opacity:1;top:20%;"
 													data-8801="display:none;"
-													
 													>
-													
-					<img src="img/car.png" 
+					<img src="img/car.png"
 													data-5000="top:20%;opacity:0;left:11%;"
 													data-5500="opacity:1;"
 													data-6500="top:10%;"
 													data-7000="top:10%;"
 													data-7500="top:10%;"
 													data-8000="top:10%;opacity:1"
-													
 													>
-		
 		</div>
-		
 		<img src="img/tree1.png" data-5000="top:50%; left:3%;" >
-		
 		<img src="img/tree2.png" data-5000="top:90%; left:7%;" >
-		
 		<img src="img/tree3.png" data-5000="top:140%; left:2%;" >
-		
 		<img src="img/tree1.png" data-5000="top:70%; right:3%;" >
-		
 		<img src="img/tree3.png" data-5000="top:120%; right:2%;" >
-		
 	</div>
-
 </div>
 
-
-
-	<div class="dialogOne" data-7800="top:100%;" data-8500="top:-31%;" data-9000="top:-31%;" data-9500="top:-100%;" >
-		<div class="dialogContainer">
-			<p class="">I have to crack JEE, </br>I must make the most of this class.</p>
-		</div>
+	<div class="dialogMotivated" data-7600="top:1000px;" data-8500="top:0px;" data-9000="top:0px;" data-9800="top:-1000px;" >
 	</div>
 
 
 
 <div class="scene" data-8000="top:100%;" data-8700="top:0%;display:block;" data-13000="display:block;" data-13700="top:-100%;" data-13701="display:none;">
-
 <div class="school">
 <div class="full-width-inner">
 	<div class="blackboard" data-9000="opacity:0;" data-9500="top:10%;opacity:1;">
-		<img src="img/classStat1.png" data-9500="top:2%;display:block;" data-10000="opacity:1;" data-10200="opacity:0;">
-		<img src="img/classStat2.png" data-10200="top:2%;display:block;opacity:0;" data-10700="opacity:1;" data-10900="opacity:0;">
-		<img src="img/classStat3.png" data-11100="top:2%;display:block;opacity:0;" data-11600="opacity:1">
+	    <img src="img/classStat1.png" data-9500="top:2%;display:block;" data-10000="opacity:1;" data-10200="opacity:0;">
+		<img src="img/classStat2.png" data-10200="top:2%;display:block;opacity:0;" data-10700="opacity:1;" data-11500="opacity:0;">
+		<img src="img/classStat3.png" data-11700="top:2%;display:block;opacity:0;" data-12500="opacity:1">
 	</div>
-		
 	<img src="img/classItem1.png" data-9000="left:-50%;top:20%;" data-9700="left:0%;">
 	<img src="img/classItem2.png" data-9000="right:-50%;top:20%;" data-9700="right:0%;">
-	
 	<div class="student-main" data-9000="opacity:0;top:15%;" data-9500="opacity:1;">
 	</div>
-	
 		<img src="img/teacher1.png" data-9000="opacity:0;left:17%;top:20%;" data-9700="opacity:1;">
 	<!-- <img src="img/thoughtBubble.png" data-9500="opacity:0;left:15%;top:20%;" data-9800="opacity:1;" data-10200="display:block;" data-10500="opacity:0;"> -->
-	
 	<img src="img/student.png" data-10200="left:18%;top:60%;opacity:0" data-10500="opacity:1;">
   <!-- <img src="img/thoughtBubble.png" data-10500="opacity:0;left:40%;top:20%;" data-10800="opacity:1;" data-11200="display:block;" data-11500="opacity:0;"> -->
-	
 	<img src="img/student2.png" data-11000="right:18%;top:60%;opacity:0" data-11300="opacity:1;">
 	<!-- <img src="img/thoughtBubble.png" data-11500="opacity:0;left:65%;top:20%;" data-11800="opacity:1;" data-12200="display:block;" data-12500="opacity:0;"> -->
-	
 	<!-- <img src="img/student2.png" data-10900="left:-1%;top:70%;opacity:0" data-11300="opacity:1;">
 	<img src="img/student4.png" data-11700="right:-1%;top:71%;opacity:0" data-12000="opacity:1;"> -->
-	
 </div>
 </div>
-
-
 </div>
 
 
-
-<div class="scene road1" data-13000="top:100%;" data-13700="top:0%;display:block;" data-20000="top:-300%;" >
-	
+<div class="scene road1" data-13000="top:100%;" data-13500="top:0%;display:block;" data-13900="top:0%;" data-20000="top:-300%;" >
 	<div class="dialogSchool">
-		<div class="dialogContainer dialogContainer1">
-			<p class="">Is it okay to ask doubts in class?</p>
-		</div>
-		<div class="dialogContainer dialogContainer2">
-			<p class="">If only she would have revised what she did earlier!</p>
-		</div>
-		<div class="dialogContainer dialogContainer3">
-			<p class="">Hope she summarises after class.</p>
-		</div>
 	</div>
-	
 	<div class="grass">
-		<div class="road"> 
-		
-								<img src="img/bus.png" class="mojoBus" 
+		<div class="road">
+								<img src="img/bus.png" class="mojoBus"
 													data-13500="opacity:0;top:0%;right:11%; display:block;"
 													data-14000="opacity:1;top:3%;right:11%;"
 													data-15000="top:8%;right:11%;"
@@ -218,218 +382,162 @@
 													data-20000="top:35%;"
 													data-25000="top:50%;"
 													>
-													
-								<img src="img/underConstruction.png" 
+								<img src="img/underConstruction.png"
 													data-18000="top:21%;right:8%;">
-													
+
 								<img src="img/bigBoard.png"
 													data-18000="top:28%;right:8%;"
 								>
-								
-			
-									
 								<img src="img/car3.png" data-15000="top:15%;right:13%;">
-								
+
 								<img src="img/car2.png"
 													data-13500="top:8%;left:11%;"
 													data-15000="top:-5%;"
 													>
 		</div>
-		
-		
-				<img src="img/tree1.png" data-13700="top:5%; left:3%;" >
-		
+		<img src="img/tree1.png" data-13700="top:5%; left:3%;" >
 		<img src="img/tree2.png" data-13700="top:20%; left:7%;" >
-		
 		<img src="img/tree3.png" data-13700="top:40%; left:2%;" >
 		<img src="img/tree3.png" data-13700="top:60%; left:5%;" >
 		<img src="img/tree3.png" data-13700="top:70%; left:6%;" >
-		
 		<img src="img/tree1.png" data-13700="top:10%; right:3%;" >
-		
 		<img src="img/tree3.png" data-13700="top:25%; right:2%;" >
-		
 		<img src="img/tree3.png" data-13700="top:38%; right:3%;" >
 		<img src="img/tree3.png" data-13700="top:55%; right:5%;" >
 		<img src="img/tree3.png" data-13700="top:65%; right:6%;" >
-		
-		
 	</div>
-	
+</div>
 
+<div class="dialogTired" data-19300="top:1000px;" data-21000="top:0px;" data-21400="top:0px;" data-22300="top:-1000px;" >
 
 </div>
 
-
-
-	<div class="dialogOne" data-19500="top:100%;" data-21000="top:-31%;" data-21200="top:-31%;" data-22000="top:-100%;" >
-		<div class="dialogContainer">
-			<p class="">Sheesh, 2 hours lost to traffic!</p>
-		</div>
-	</div>
-	
-
 <div class="scene homeSlide" data-20000="top:100%;" data-21500="top:0%;display:block;">
-	
-
-	
 <div class="inner">
-
 <img src="img/sprite.png" class="mojo"
-													data-22000="top:0%;left:41%;opacity:0;"		
+													data-22000="top:0%;left:41%;opacity:0;"
 													data-22500="top:25%;opacity:1;display:block;"
 													data-24300="display:none;"
 													>
-
 <img src="img/tensed.png" class="mojo"
-													data-22000="top:0%;left:41.7%;display:none;"		
+													data-22000="top:0%;left:41.7%;display:none;"
 													data-24300="top:25%;opacity:1;display:block;"
-													>													
-													
-													
+													>
 <!-- <img src="img/thoughtBubble.png" data-16700="opacity:0;left:40%;top:20%;" data-17000="opacity:1;" data-17400="display:block;" data-17700="opacity:0;"> -->
-													
+
 <img src="img/table.png" class="table"
-													data-15000="top:100%;left:33%;display:block;"		
+													data-15000="top:100%;left:33%;display:block;"
 													data-17000="top:38%;"
 													>
-													
 <img src="img/table1.png" data-15000="display:none;left:33%;top:38%;" data-22500="display:block;">
 <img src="img/table2.png" data-15000="display:none;left:33%;top:38%;" data-24500="display:block;">
 <img src="img/table3.png" data-15000="display:none;left:33%;top:38%;" data-26500="display:block;">
-
-
 <img src="img/side-table.png" id="side-table2" alt="Side Table" class="side-table" data-15000="left:-100%;top:32%;" data-20000="left: 0%; display: block;" >
+<img src="img/digClock12.png" class="digClock" data-15000="left: 16.5%; top:32.5%;display:block;">
+<img src="img/digClock11.png" class="digClock" data-15000="left: 16.5%; top:32.5%;display:block;" data-28000="display: none;" >
+<img src="img/digClock10.png" class="digClock" data-15000="left: 16.5%; top:32.5%;display:block;" data-27000="display: none;" >
+<img src="img/digClock9.png" class="digClock" data-15000="left: 16.5%; top:32.5%;display:block;" data-26000="display: none;" >
 
-<img src="img/digClock12.png" class="digClock" data-15000="left: 16.5%; top:32.5%;display:block;" data-30000="display: none;" >
-<img src="img/digClock11.png" class="digClock" data-15000="left: 16.5%; top:32.5%;display:block;" data-29000="display: none;" >
-<img src="img/digClock10.png" class="digClock" data-15000="left: 16.5%; top:32.5%;display:block;" data-28000="display: none;" >
-<img src="img/digClock9.png" class="digClock" data-15000="left: 16.5%; top:32.5%;display:block;" data-27000="display: none;" >
-<img src="img/digClock8.png" class="digClock" data-15000="left: 16.5%; top:32.5%;display:block;" data-26000="display: none;" >
-<img src="img/digClock7.png" class="digClock" data-15000="left: 16.5%; top:32.5%;display:block;" data-25000="display: none;" >
-<img src="img/digClock6.png" class="digClock" data-15000="left: 16.5%; top:32.5%;display:block;" data-24000="display: none;" >
-<img src="img/digClock5.png" class="digClock" data-15000="left: 16.5%; top:32.5%;display:block;" data-23000="display: none;" >
-<img src="img/digClock4.png" class="digClock" data-15000="left: 16.5%; top:32.5%;display:block;" data-22000="display: none;" >
 
 <img src="img/WB4.png" data-15000="display:none;top:54%;left:27.5%;" data-26000="display:block;">
 <img src="img/WB3.png" data-15000="display:none;top:54%;left:27.5%;" data-24500="display:block;">
 <img src="img/WB2.png" data-15000="display:none;top:54%;left:27.5%;" data-23000="display:block;">
 <img src="img/WB1.png" data-15000="display:block;top:54%;left:27.5%;">
 
-
-
-<img src="img/batman.png" data-27000="top:100%;left:22%;display:block;" data-27500="top:62%;">
-
-
-
+<img src="img/batman.png" data-30300="top:100%;left:22%;display:block;" data-30800="top:62%;">
 
 
 <div class="window-sky" data-22000="right:0%;top:10%;background: rgb(166,218,232);display:block;" data-20000="right:0%;" data-25000="background: rgb(39,43,42);">
 				<img src="img/windowPlain.png">
-				
-				
 				<img src="img/cloud.png" data-21500="left:15%;top:15%;display:block;opacity:0;" data-22000="opacity:1;" data-24000="top:35%;" data-24200="display:none;">
 				<img src="img/stars.png" alt="Moon" class="stars" data-24500="top: 20%; left:0%; opacity:0;" data-25500="opacity:1;"> -->
 				<img src="img/moon.png" alt="Moon" class="moon" data-24500="top: 50%; left:40%; opacity:0;" data-26000="opacity:1;top:20%;">
-				<!-- 
+				<!--
 				<img class="sun" data-100="top: 50%; left: 36%; opacity:0;" data-1000="top: 20%;; opacity:1;" src="img/sun.png" alt="Sun" class="sun"> -->
-				
 </div>
 </div>
 </div>
 
-<div class="dialogDad" data-23500="top:100%;" data-24500="top:-31%;" data-25000="top:-31%;" data-25500="top:-100%;">
-	<div class="dialogContainer dialogContainer_1">
-			<p class="">Son, you know how expensive it is to pay those coaching fees. Make the most of it.</p>
-		</div>
-		<div class="dialogContainer dialogContainer_2">
-			<p class="">Yes, Dad!</p>
-		</div>
+
+
+
+<div class="dialogDad" data-23300="top:1000px" data-24500="top:0px;" data-25000="top:0px;" data-25800="top:-1000px;">
 </div>
 
-	<div class="dialogBatman" data-28000="top:100%;" data-29000="top:-31%;" data-29500="top:-31%;" data-30000="top:-100%;">
-	
-		<div class="dialogContainer dialogContainer_1">
-			<p class="">It’s 11:30 already, I have been stuck on this math problem for 3 hours now!</p>
-		</div>
-		<div class="dialogContainer dialogContainer_2">
-			<p class="">I gotta go save Gotham. Get Edvice!</p>
-		</div>
-	
+	<div class="dialogProblem" data-27800="top:1000px;" data-29000="top:0px;" data-29500="top:0px;" data-30300="top:-1000px;">
+	</div>
+
+	<div class="dialogBatman" data-31100="top:1000px;" data-32300="top:0px;" data-32800="top:0px;" data-33600="top:-1000px;">
 	</div>
 
 
-<div class="sceneFinal" data-28300="top:100%;" data-29000="top:0%;" data-30000="top:0%;" data-37000="top:0%;" data-37500="top:-40%;">
-	
+<div class="sceneFinal" data-31800="top:100%;" data-32300="top:0%;">
 	<div class="final">
-	<div style="width:80%;margin:auto;">
-	
-		<div class="pure-g center margin40" data-30500="opacity:0;" data-31000="opacity:1;" >
+	<div style="width:70%;margin:auto;" data-33000="opacity:0;" data-33200="opacity:1;">
+		<div class="pure-g center" style="margin-top:35px;">
 				<div class="pure-u-1">
 					<img src="img/logoBlue.png" style="position:relative;">
-					<p class="sub-text-bottom">Edvice is India’s first on-demand mobile tutoring platform connecting students with authentic tutors </br>from India’s premier engineering colleges.</p>
-					
+					<p class="sub-text-bottom"><span style="color:#333;"><b>Get instant tutoring. Right on your mobile.</b></span></br>
+					We connect you <b>instantly, anytime of the day</b>,</br>to handpicked tutors studying in IITs, BITS and premier engineering colleges.
+					</br>These tutors have cracked these exams and they understand your struggles much better than anyone else.
+
 				</div>
 		</div>
-			
-	
-		<div class="pure-g margin10 marginBottom70">
-				<div class="pure-u-1-4 center">
-					<div class="solution" data-31500="opacity:0;" data-32000="opacity:1;" data-content="Learn on the go!">
-						<img src="img/solution2.png">
-					</div>			
-				</div>
-				
-				<div class="pure-u-1-4 center">
-					<div class="solution" data-32500="opacity:0;" data-33000="opacity:1;" data-content="Accessibility">
-						<img src="img/solution1.png">
-					</div>					
-				</div>
-				
-				<div class="pure-u-1-4 center">
-					<div class="solution" data-33500="opacity:0;" data-34000="opacity:1;" data-content="Counselling">
-						<img src="img/solution3.png">
+		<div class="pure-g margin10" style="margin-bottom:30px;max-width:75%;margin:auto;">
+				<div class="pure-u-1-3 center">
+					<div class="solution" data-content="High Quality">
+						<img src="img/1.png">
 					</div>
 				</div>
-				
-				<div class="pure-u-1-4 center">	
-					<div class="solution" data-34500="opacity:0;" data-35000="opacity:1;" data-content="Personal Tutor">
-						<img src="img/solution4.png">
+				<div class="pure-u-1-3 center">
+					<div class="solution" data-content="Convenient">
+						<img src="img/2.png">
 					</div>
 				</div>
-
+				<div class="pure-u-1-3 center">
+					<div class="solution" data-content="Affordable">
+						<img src="img/3.png">
+					</div>
+				</div>
 		</div>
-		
-		<div class="pure-g margin100" data-35500="opacity:0;" data-36000="opacity:1;">
-				
+		<div class="pure-g" style="margin-top:35px;">
 			<div class="pure-u-1 center">
-				
-				<input class="email signup" type="text" placeholder="Enter your email address"></input> 
-				<button class="btn-mail"><img src="img/send.svg" class="send-icon"></button>
-		
-			</div>
-		
-		</div>
-		
-		
-	 <div class="pure-g margin150" data-38000="opacity:0;" data-38500="opacity:1;">
-				
-			<div class="pure-u-1 center">
-				<p class="white">Some text here.</p>
-				<img src="img/fb.png" class="share" style="position:relative;">
-		
-			</div>
-		
-		</div>
+            <p class="sign-up">Sign up to know more. Your first session is free!</p>
+            <input id="name_field" class="email nameField" type="text" placeholder="Enter your name">
+			<input id="email_field" class="email emailField" type="text" placeholder="Email address" oninput="validateEmail(this.value, 'btn-submit-bottom')">
+			<button class="btn-mail btn-disabled" id="btn-submit-bottom" onclick="submitSubscription()"><img src="img/send.svg" class="send-icon"></button>
+	 <div style="margin-top:35px;">
+                <a style="display:inline-block;margin-right:10px;" href="https://www.facebook.com/sharer/sharer.php?app_id=801784483234222&sdk=joey&u=http%3A%2F%2Fwww.getedvice.com%2Finfographic%2F&display=popup&ref=plugin&src=share_button" onclick="window.open('https://www.facebook.com/sharer/sharer.php?app_id=801784483234222&sdk=joey&u=http%3A%2F%2Fwww.getedvice.com%2Finfographic%2F&display=popup&ref=plugin&src=share_button', 'newwindow', 'width=570, height=500'); return false;">
+				    <img src="img/fb.png" class="share">
+				</a>
 
-	
-	
-	
-	</div>	
+				<a style="display:inline-block;margin-right:10px;" href="http://twitter.com/intent/tweet?status=Here%20is%20what%20most%20students%20go%20through%20to%20crack%20the%20JEE!%0A+http://www.getedvice.com/infographic/"  onclick="window.open('http://twitter.com/intent/tweet?status=Here%20is%20what%20most%20students%20go%20through%20to%20crack%20the%20JEE!%0A+http://www.getedvice.com/infographic/', 'newwindow', 'width=400, height=300'); return false;">
+				    <img src="img/twitter.png" class="share">
+				</a>
+			<a style="display:inline-block;margin-right:10px;" href="http://www.getedvice.com" target="_blank" id="share_button">
+				    <img src="img/more.png" class="share">
+				</a>
+			</div>
+		</div>
 	</div>
-
+	</div>
+</div>
 </div>
 
+
+
+
+
+
+<div class="overlay" id="overlay" style="display:none;"></div>
+
+<div class="box" id="box">
+ <a class="boxclose" id="boxclose"></a>
+ <h4>Thanks!</h4>
+ <p>
+  Thanks for subscribing!
+ </p>
+</div>
 
 <!-- <div class="footer" data-37000="top:100%;" data-37500="top:40%">
 
@@ -442,13 +550,25 @@
 </div>
 </div>
 
-<!-- <script type="text/javascript" src="js/enquire.min.js"></script> -->
+</div>
+
+
+
+
+
+
+
+
+
+
 <script type="text/javascript" src="js/skrollr.js"></script>
 <script type="text/javascript">
 
+
+
 var s = skrollr.init(smoothScrolling=true,scale=5,easing='swing');
 
-var slideTopPosisition = [0, 5000, 9000, 13700, 21200, 25000, 29500, 36000];
+var slideTopPosisition = [0, 5000, 9000, 13700, 21200, 25000, 29500, 32300, 33200];
 
 var animateScrollNext = function(duration) {
     $('html, body').animate({ scrollTop: slideTopPosisition[currentSlide+1] }, duration);
@@ -464,15 +584,15 @@ $nextButton.on('click', function() {
                 // $prevButton.removeClass('inactive');
                 break;
               case 1:
-                animateScrollNext(5000);
-                currentSlide += 1;
-                break;
-              case 2:
                 animateScrollNext(7000);
                 currentSlide += 1;
                 break;
+              case 2:
+                animateScrollNext(8000);
+                currentSlide += 1;
+                break;
               case 3:
-                animateScrollNext(5000);
+                animateScrollNext(8000);
                 currentSlide += 1;
                 break;
               case 4:
@@ -488,14 +608,20 @@ $nextButton.on('click', function() {
                 currentSlide += 1;
                 break;
               case 7:
-                animateScrollNext(4000);
+                animateScrollNext(2000);
                 currentSlide += 1;
-                $nextButton.addClass('inactive');
+                $('#next').fadeOut();
+                break;
+              case 8:
+                //animateScrollNext(4000);
+                //currentSlide += 1;
+                 $('#next').fadeOut();
                 break;
             }
           });
-	
+
 </script>
+
 </body>
 
 </html>
