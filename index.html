@@ -707,7 +707,14 @@ if( /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ) {
       }
 
 
-var s = skrollr.init(smoothScrolling=true,scale=1,easing='swing');
+var s = skrollr.init(
+				smoothScrolling=true,
+				scale=1,
+				easing='swing'
+				mobileCheck: function() {
+          return !(/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera);
+				}
+				);
 
 var slideTopPosisition = [0, 5000, 9000, 13700, 21200, 25000, 29500, 32300, 33200];
 
