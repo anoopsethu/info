@@ -706,23 +706,16 @@ if( /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ) {
         $('#mobile').remove();
       }
 
+var mobileCheck=function() {
+          return !(/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera);
+				} 
 
-/*var s = skrollr.init(
+var s = skrollr.init(
 				smoothScrolling=true,
 				scale=1,
-				easing='swing'
-				mobileCheck: function() {
-          return !(/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera);
-				}
-				); */
-				
-skrollr.init({
-        scale:1,
-        smoothScrolling: true,
-        mobileCheck: function() {
-          return !(/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera);
-      }
-    });
+				easing='swing',
+				mobileCheck=0
+				); 
 
 var slideTopPosisition = [0, 5000, 9000, 13700, 21200, 25000, 29500, 32300, 33200];
 
